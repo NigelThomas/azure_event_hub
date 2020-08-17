@@ -39,7 +39,8 @@ cat ./20-min-at-50-rps.xml.gz | zcat | ./dribble.sh | docker run -v `pwd`:/data/
 * I am piping from `cat` into `zcat` because zcat on Mac has a bug when given a filename
 * `dribble.sh` is a simple script to read from `stdin` and sleep 1 second between records before emitting to `stdout` - in this repository
 * I use the docker container `edenhill/kafkacat:1.5.0` in interactive mode because this is the easiest way to get most up to date kafkacat on Mac. 
- * On Ubuntu, the latest kafkacat is 1.3 which doesn't support the -F option, and so can't deal with all the security config for Azure Event Hub
+ * On Ubuntu 18.04, the latest kafkacat is 1.3 which doesn't support the -F option, and so can't deal with all the security config for Azure Event Hub
+ * (TO BE TESTED) On Ubuntu 20.04 the latest kafkacat is 1.5 which does support -F
 * Using the docker option `--interactive` and `-P` allows us to pipe data into `kafkacat` running in the container
 
 ## Reading data using kafkacat
